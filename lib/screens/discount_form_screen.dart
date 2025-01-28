@@ -1,8 +1,8 @@
 import 'package:cresce_vendas_app_v1/widgets/custom_app_bar.dart';
-import 'package:cresce_vendas_app_v1/components/customDateTimePicker.dart';
-import 'package:cresce_vendas_app_v1/components/customDropdownButtonFormField.dart';
-import 'package:cresce_vendas_app_v1/components/customFormTextField.dart';
-import 'package:cresce_vendas_app_v1/components/dashedBorderContainer.dart';
+import 'package:cresce_vendas_app_v1/components/custom_date_time_picker.dart';
+import 'package:cresce_vendas_app_v1/components/custom_dropdown_button_form_field.dart';
+import 'package:cresce_vendas_app_v1/components/custom_form_text_field.dart';
+import 'package:cresce_vendas_app_v1/components/dashed_border_container.dart';
 import 'package:cresce_vendas_app_v1/widgets/custom_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -153,28 +153,31 @@ class _DiscountFormScreenState extends State<DiscountFormScreen> {
               ),
               const SizedBox(height: 24),
               DashedBorderContainer(
-                child: Center(
-                  child: GestureDetector(
-                    onTap: _pickImage,
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        maxWidth: 73,
-                        maxHeight: 52,
-                      ),
-                      child: Container(
-                        width: 73,
-                        height: 52,
-                        child:
-                            _imagePath != null && File(_imagePath!).existsSync()
-                                ? Image.file(
-                                    File(_imagePath!),
-                                    fit: BoxFit.cover,
-                                  )
-                                : SvgPicture.asset(
-                                    'assets/svg/Frame.svg',
-                                    width: 73,
-                                    height: 51,
-                                  ),
+                child: Container(
+                  height: 206,
+                  child: Center(
+                    child: GestureDetector(
+                      onTap: _pickImage,
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          maxWidth: 200,
+                          maxHeight: 200,
+                        ),
+                        child: Container(
+                          width: 200,
+                          height: 200,
+                          child: _imagePath != null &&
+                                  File(_imagePath!).existsSync()
+                              ? Image.file(
+                                  File(_imagePath!),
+                                  fit: BoxFit.cover,
+                                )
+                              : SvgPicture.asset(
+                                  'assets/svg/Frame.svg',
+                                  width: 200,
+                                  height: 200,
+                                ),
+                        ),
                       ),
                     ),
                   ),
