@@ -78,8 +78,8 @@ class _DiscountFormScreenState extends State<DiscountFormScreen> {
     return Scaffold(
       appBar: CustomAppBar(
           titleText: widget.product == null
-              ? 'Cadastro de Desconto'
-              : 'Editar Desconto'),
+              ? 'Cadastro de desconto'
+              : 'Editar desconto'),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Form(

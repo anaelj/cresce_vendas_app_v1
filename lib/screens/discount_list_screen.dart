@@ -72,7 +72,7 @@ class _DiscountListScreenState extends State<DiscountListScreen> {
                 ),
               ),
               child: const Text(
-                'Cadastrar Desconto',
+                'Cadastrar desconto',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
