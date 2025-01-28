@@ -1,4 +1,4 @@
-import 'package:cresce_vendas_app_v1/components/customSwitchTile.dart';
+import 'package:cresce_vendas_app_v1/components/custom_switch_tile.dart';
 import 'package:cresce_vendas_app_v1/models/product.dart';
 import 'package:cresce_vendas_app_v1/screens/discount_detail_screen.dart';
 import 'package:cresce_vendas_app_v1/stores/product_store.dart';

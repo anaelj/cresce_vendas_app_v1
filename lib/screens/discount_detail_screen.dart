@@ -1,5 +1,6 @@
+import 'package:cresce_vendas_app_v1/utils/currency.dart';
 import 'package:cresce_vendas_app_v1/widgets/custom_app_bar.dart';
-import 'package:cresce_vendas_app_v1/components/customSwitchTile.dart';
+import 'package:cresce_vendas_app_v1/components/custom_switch_tile.dart';
 import 'package:cresce_vendas_app_v1/widgets/custom_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import '../models/product.dart';
@@ -169,13 +170,12 @@ class _DiscountDetailScreenState extends State<DiscountDetailScreen> {
 
     switch (product.discount!.type) {
       case 'Percentual':
-        return (product.price -
-                (product.price * product.discount!.percentageDiscount / 100))
-            .toStringAsFixed(2);
+        return formatBrlValue(product.price -
+            (product.price * product.discount!.percentageDiscount / 100));
       case 'De Por':
-        return (product.discount!.toPrice).toStringAsFixed(2);
+        return formatBrlValue(product.discount!.toPrice);
       case 'Leve + Pague-':
-        return (product.price).toStringAsFixed(2);
+        return formatBrlValue(product.price);
       default:
         return '0.00';
     }
@@ -186,9 +186,9 @@ class _DiscountDetailScreenState extends State<DiscountDetailScreen> {
 
     switch (product.discount!.type) {
       case 'Percentual':
-        return 'R\$ ${(product.price).toStringAsFixed(2)}';
+        return 'R\$ ${formatBrlValue(product.price)}';
       case 'De Por':
-        return 'R\$ ${(product.discount!.fromPrice).toStringAsFixed(2)}';
+        return 'R\$ ${formatBrlValue(product.discount!.fromPrice)}';
       case 'Leve + Pague-':
         return '';
       default:

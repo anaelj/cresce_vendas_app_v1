@@ -1,4 +1,4 @@
-import 'package:cresce_vendas_app_v1/components/DashedBorderPainter.dart';
+import 'package:cresce_vendas_app_v1/components/dashed_border_painter.dart';
 import 'package:flutter/material.dart';
 
 class DashedBorderContainer extends StatelessWidget {
