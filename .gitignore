@@ -1,0 +1,118 @@
+# Arquivos e diretórios gerados pelo Flutter
+.dart_tool/
+.idea/
+.vscode/
+*.iml
+*.log
+*.swp
+*.swo
+
+# Diretório de build
+/build/
+/android/app/build/
+/ios/build/
+/ios/Flutter/App.framework/
+/ios/Flutter/Flutter.framework/
+/ios/Flutter/Flutter.podspec
+/ios/Flutter/Generated.xcconfig
+/ios/Flutter/app.flx
+/ios/Flutter/app.zip
+/ios/Flutter/flutter_assets/
+/ios/Flutter/flutter_export_environment.sh
+/ios/ServiceDefinitions.json
+/ios/Runner/GeneratedPluginRegistrant.*
+
+# Arquivos específicos do Android
+/android/gradle-wrapper.jar
+/android/.gradle/
+/android/local.properties
+/android/key.properties
+/android/**/gradle/
+/android/**/gradlew
+/android/**/gradlew.bat
+
+# Arquivos específicos do iOS
+/ios/.generated/
+/ios/Pods/
+/ios/Runner.xcworkspace/
+/ios/Runner.xcodeproj/project.xcworkspace/
+/ios/Runner.xcodeproj/xcuserdata/
+
+# Dependências do Flutter
+/pubspec.lock
+/.packages
+/.flutter-plugins
+/.flutter-plugins-dependencies
+/.metadata
+
+# Arquivos de ambiente
+.env
+.env.*
+
+# Arquivos de configuração do Dart
+.dart_tool/package_config.json
+
+# Arquivos de usuário específicos
+**/user_interface_definition.dart
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Arquivos de backup
+*.bak
+*.backup
+
+# Arquivos de IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+
+# Arquivos de VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Arquivos de teste
+/test/coverage/
+
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+**/android/**/gradle-wrapper.jar
+**/ios/.generated/
+**/ios/Flutter/App.framework/
+**/ios/Flutter/Flutter.framework/
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/app.flx
+**/ios/Flutter/app.zip
+**/ios/Flutter/flutter_assets/
+**/ios/ServiceDefinitions.json
+**/ios/Runner/GeneratedPluginRegistrant.*
+**/lib/generated_plugin_registrant.dart
+**/pubspec.lock
+**/.packages
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.metadata
+**/build/
+/web/build/
+/web/main.dart.js
+/web/main.dart.js.map
+/windows/.vs/
+/windows/build/
+/windows/Debug/
+/windows/Release/
+/windows/runner/GeneratedPluginRegistrant.h
+/windows/runner/GeneratedPluginRegistrant.cpp
