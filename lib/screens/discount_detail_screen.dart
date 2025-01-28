@@ -1,5 +1,6 @@
-import 'package:cresce_vendas_app_v1/widgets/customAppBar.dart';
+import 'package:cresce_vendas_app_v1/widgets/custom_app_bar.dart';
 import 'package:cresce_vendas_app_v1/components/customSwitchTile.dart';
+import 'package:cresce_vendas_app_v1/widgets/custom_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import '../models/product.dart';
 import 'discount_form_screen.dart';
@@ -84,21 +85,26 @@ class _DiscountDetailScreenState extends State<DiscountDetailScreen> {
                       ),
                       child: Text('${_calculateSavings(widget.product)}',
                           style: const TextStyle(
-                              color: Colors.white, fontSize: 12))),
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                              fontSize: 12))),
                   const SizedBox(height: 8),
                   Row(
                     children: [
                       Container(
-                          padding: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF007FBA),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          child: Text('R\$ ${_calculateValue(widget.product)}',
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600))),
+                        padding: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF007FBA),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Text(
+                          'R\$ ${_calculateValue(widget.product)}',
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
                       const SizedBox(
                         width: 8,
                       ),
@@ -106,8 +112,8 @@ class _DiscountDetailScreenState extends State<DiscountDetailScreen> {
                         '${_oldValue(widget.product)}',
                         style: const TextStyle(
                           decoration: TextDecoration.lineThrough,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
                           color: Colors.black,
                         ),
                       ),
@@ -129,33 +135,16 @@ class _DiscountDetailScreenState extends State<DiscountDetailScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    DiscountFormScreen(product: widget.product),
-              ),
-            );
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF007FBA),
-            foregroundColor: Colors.white,
-            minimumSize: const Size(double.infinity, 50),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        caption: 'Editar desconto',
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DiscountFormScreen(product: widget.product),
             ),
-          ),
-          child: Text(
-            'Editar desconto',
-            style: TextStyle(
-                color: Theme.of(context).colorScheme.surface,
-                fontWeight: FontWeight.w700),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

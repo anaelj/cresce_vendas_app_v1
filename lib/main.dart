@@ -1,6 +1,6 @@
 import 'package:cresce_vendas_app_v1/models/discount.dart';
 import 'package:cresce_vendas_app_v1/models/product.dart';
-import 'package:cresce_vendas_app_v1/screens/SplashScreen.dart';
+import 'package:cresce_vendas_app_v1/screens/splash_screen.dart';
 import 'package:cresce_vendas_app_v1/screens/discount_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,10 +32,10 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.white,
         textTheme: const TextTheme(
-          bodyLarge: TextStyle(
-              fontWeight: FontWeight.w300, color: Color(0xFF565656)), // Regular
-          bodyMedium: TextStyle(
-              fontWeight: FontWeight.w300, color: Color(0xFF403E43)), // Regular
+          bodyLarge:
+              TextStyle(fontWeight: FontWeight.w300, color: Color(0xFF565656)),
+          bodyMedium:
+              TextStyle(fontWeight: FontWeight.w400, color: Color(0xFF403E43)),
           titleLarge: TextStyle(
               fontWeight: FontWeight.w700,
               fontSize: 16,

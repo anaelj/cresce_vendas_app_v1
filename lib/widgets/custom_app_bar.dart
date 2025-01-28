@@ -12,8 +12,9 @@ class CustomAppBar extends AppBar {
           title: Text(
             titleText,
             style: const TextStyle(
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w700,
               color: Color(0xFF403E43),
+              fontSize: 16,
             ),
           ),
           centerTitle: true,

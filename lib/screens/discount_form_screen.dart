@@ -1,8 +1,9 @@
-import 'package:cresce_vendas_app_v1/widgets/customAppBar.dart';
+import 'package:cresce_vendas_app_v1/widgets/custom_app_bar.dart';
 import 'package:cresce_vendas_app_v1/components/customDateTimePicker.dart';
 import 'package:cresce_vendas_app_v1/components/customDropdownButtonFormField.dart';
 import 'package:cresce_vendas_app_v1/components/customFormTextField.dart';
 import 'package:cresce_vendas_app_v1/components/dashedBorderContainer.dart';
+import 'package:cresce_vendas_app_v1/widgets/custom_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../models/product.dart';
@@ -183,26 +184,9 @@ class _DiscountFormScreenState extends State<DiscountFormScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ElevatedButton(
-          onPressed: _saveDiscount,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF007FBA),
-            foregroundColor: Colors.white,
-            minimumSize: const Size(double.infinity, 50),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-          ),
-          child: const Text(
-            'Salvar',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-        ),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        caption: 'Salvar',
+        onPressed: _saveDiscount,
       ),
     );
   }
@@ -215,7 +199,7 @@ class _DiscountFormScreenState extends State<DiscountFormScreen> {
             Expanded(
               child: CustomTextFormField(
                 controller: _fromPriceController,
-                labelText: 'Preço DE',
+                labelText: 'Preço "DE"',
                 keyboardType: TextInputType.number,
                 validator: (value) =>
                     value?.isEmpty ?? true ? 'Campo obrigatório' : null,
@@ -225,7 +209,7 @@ class _DiscountFormScreenState extends State<DiscountFormScreen> {
             Expanded(
               child: CustomTextFormField(
                 controller: _toPriceController,
-                labelText: 'Preço POR',
+                labelText: 'Preço "POR"',
                 keyboardType: TextInputType.number,
                 validator: (value) =>
                     value?.isEmpty ?? true ? 'Campo obrigatório' : null,

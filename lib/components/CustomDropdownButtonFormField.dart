@@ -37,25 +37,26 @@ class CustomDropdownButtonFormField<T> extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Label acima do dropdown
         if (labelText != null)
           Padding(
-            padding: const EdgeInsets.only(bottom: 4.0), // Espaçamento de 4px
+            padding: const EdgeInsets.only(bottom: 4.0),
             child: Text(
               labelText!,
               style: const TextStyle(
-                fontSize: 16,
-                color: Colors.black87,
+                fontSize: 14,
+                color: const Color(0xff565656),
               ),
             ),
           ),
-        // Dropdown
         DropdownButtonFormField<T>(
           value: value,
           items: items,
           onChanged: onChanged,
           validator: validator,
           icon: const SizedBox.shrink(),
+          style: const TextStyle(
+            color: const Color(0xff565656),
+          ),
           decoration: InputDecoration(
             hintText: hintText,
             prefixIcon: prefixIcon,
