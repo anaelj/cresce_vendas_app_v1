@@ -103,7 +103,7 @@ class _DiscountDetailScreenState extends State<DiscountDetailScreen> {
                         width: 8,
                       ),
                       Text(
-                        'R\$ ${widget.product.price.toStringAsFixed(2)}',
+                        '${_oldValue(widget.product)}',
                         style: const TextStyle(
                           decoration: TextDecoration.lineThrough,
                           fontWeight: FontWeight.normal,
@@ -150,7 +150,7 @@ class _DiscountDetailScreenState extends State<DiscountDetailScreen> {
             ),
           ),
           child: Text(
-            'Editar Desconto',
+            'Editar desconto',
             style: TextStyle(
                 color: Theme.of(context).colorScheme.surface,
                 fontWeight: FontWeight.w700),
@@ -184,13 +184,24 @@ class _DiscountDetailScreenState extends State<DiscountDetailScreen> {
                 (product.price * product.discount!.percentageDiscount / 100))
             .toStringAsFixed(2);
       case 'De Por':
-        return (product.discount!.fromPrice - product.discount!.toPrice)
-            .toStringAsFixed(2);
+        return (product.discount!.toPrice).toStringAsFixed(2);
       case 'Leve + Pague-':
-        return ((product.discount!.buyQuantity -
-                    product.discount!.payQuantity) *
-                product.price)
-            .toStringAsFixed(2);
+        return (product.price).toStringAsFixed(2);
+      default:
+        return '0.00';
+    }
+  }
+
+  String _oldValue(Product product) {
+    if (product.discount == null) return '0.00';
+
+    switch (product.discount!.type) {
+      case 'Percentual':
+        return 'R\$ ${(product.price).toStringAsFixed(2)}';
+      case 'De Por':
+        return 'R\$ ${(product.discount!.fromPrice).toStringAsFixed(2)}';
+      case 'Leve + Pague-':
+        return '';
       default:
         return '0.00';
     }

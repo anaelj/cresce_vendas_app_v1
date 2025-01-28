@@ -34,17 +34,20 @@ Widget discountCard(
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 0.3,
-                  color: const Color(0xFF007FBA),
+                  color: const Color(0xFFE1E1E1),
                 ),
                 borderRadius: BorderRadius.circular(5),
               ),
-              child: SizedBox(
-                width: 100,
-                height: 100,
-                child:
-                    product.image != null && File(product.image!).existsSync()
-                        ? Image.file(File(product.image!), fit: BoxFit.cover)
-                        : const Icon(Icons.add_photo_alternate, size: 50),
+              child: Padding(
+                padding: EdgeInsets.all(4), // Padding interno
+                child: SizedBox(
+                  width: 100,
+                  height: 100,
+                  child:
+                      product.image != null && File(product.image!).existsSync()
+                          ? Image.file(File(product.image!), fit: BoxFit.cover)
+                          : const Icon(Icons.add_photo_alternate, size: 50),
+                ),
               ),
             ),
             Expanded(
@@ -63,7 +66,7 @@ Widget discountCard(
                           'Desconto',
                           style: TextStyle(
                             color: Theme.of(context).textTheme.bodyLarge?.color,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                         const SizedBox(width: 4),
@@ -98,11 +101,14 @@ Widget discountCard(
                           'Data ativação',
                           style: TextStyle(
                             color: Theme.of(context).textTheme.bodyLarge?.color,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                         Text('${formatDate(product.discount?.startDate)}'),
                       ],
+                    ),
+                    const SizedBox(
+                      width: 10,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,7 +117,7 @@ Widget discountCard(
                           'Data inativação',
                           style: TextStyle(
                             color: Theme.of(context).textTheme.bodyLarge?.color,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                         Text('${formatDate(product.discount?.endDate)}'),
@@ -144,7 +150,7 @@ Widget discountCard(
                 'Ver Desconto',
                 style: TextStyle(
                   color: Theme.of(context).textTheme.bodyLarge?.color,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
               SizedBox(width: 8),
