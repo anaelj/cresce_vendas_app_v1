@@ -1,9 +1,9 @@
-import 'package:cresce_vendas_app_v1/components/CustomAppBar.dart';
-import 'package:cresce_vendas_app_v1/components/CustomSwitchTile.dart';
+import 'package:cresce_vendas_app_v1/widgets/customAppBar.dart';
+import 'package:cresce_vendas_app_v1/components/customSwitchTile.dart';
 import 'package:flutter/material.dart';
 import '../models/product.dart';
 import 'discount_form_screen.dart';
-import '../stores/product_store.dart'; // Importe o ProductStore
+import '../stores/product_store.dart';
 import 'dart:io';
 
 class DiscountDetailScreen extends StatefulWidget {
@@ -23,13 +23,11 @@ class DiscountDetailScreen extends StatefulWidget {
 }
 
 class _DiscountDetailScreenState extends State<DiscountDetailScreen> {
-  // Variável para controlar o estado do Switch
   bool _switchValue = false;
 
   @override
   void initState() {
     super.initState();
-    // Inicializa o valor do Switch com o status do desconto do produto
     _switchValue = widget.product.discount?.status ?? false;
   }
 
@@ -81,10 +79,8 @@ class _DiscountDetailScreenState extends State<DiscountDetailScreen> {
                   Container(
                       padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
-                        color:
-                            const Color(0xFF007FBA), // Cor de fundo (#007FBA)
-                        borderRadius: BorderRadius.circular(
-                            4), // Bordas levemente arredondadas
+                        color: const Color(0xFF007FBA),
+                        borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text('${_calculateSavings(widget.product)}',
                           style: const TextStyle(
@@ -95,10 +91,8 @@ class _DiscountDetailScreenState extends State<DiscountDetailScreen> {
                       Container(
                           padding: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
-                            color: const Color(
-                                0xFF007FBA), // Cor de fundo (#007FBA)
-                            borderRadius: BorderRadius.circular(
-                                4), // Bordas levemente arredondadas
+                            color: const Color(0xFF007FBA),
+                            borderRadius: BorderRadius.circular(4),
                           ),
                           child: Text('R\$ ${_calculateValue(widget.product)}',
                               style: const TextStyle(
@@ -111,12 +105,10 @@ class _DiscountDetailScreenState extends State<DiscountDetailScreen> {
                       Text(
                         'R\$ ${widget.product.price.toStringAsFixed(2)}',
                         style: const TextStyle(
-                          decoration:
-                              TextDecoration.lineThrough, // Risca o texto
-                          fontWeight:
-                              FontWeight.normal, // Remove o negrito (bold)
-                          fontSize: 16, // Tamanho da fonte (opcional)
-                          color: Colors.black, // Cor do texto (opcional)
+                          decoration: TextDecoration.lineThrough,
+                          fontWeight: FontWeight.normal,
+                          fontSize: 16,
+                          color: Colors.black,
                         ),
                       ),
                     ],
@@ -151,7 +143,11 @@ class _DiscountDetailScreenState extends State<DiscountDetailScreen> {
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xFF007FBA),
-            minimumSize: const Size.fromHeight(50),
+            foregroundColor: Colors.white,
+            minimumSize: const Size(double.infinity, 50),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
           ),
           child: Text(
             'Editar Desconto',

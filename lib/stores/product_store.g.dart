@@ -50,6 +50,14 @@ mixin _$ProductStore on _ProductStore, Store {
         .run(() => super.updateProduct(index, product));
   }
 
+  late final _$deleteProductAsyncAction =
+      AsyncAction('_ProductStore.deleteProduct', context: context);
+
+  @override
+  Future<void> deleteProduct(int index) {
+    return _$deleteProductAsyncAction.run(() => super.deleteProduct(index));
+  }
+
   late final _$toggleDiscountStatusAsyncAction =
       AsyncAction('_ProductStore.toggleDiscountStatus', context: context);
 

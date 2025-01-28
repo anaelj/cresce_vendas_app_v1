@@ -30,6 +30,13 @@ abstract class _ProductStore with Store {
   }
 
   @action
+  Future<void> deleteProduct(int index) async {
+    var keyAtIndex = _box.keyAt(index);
+    await _box.delete(keyAtIndex);
+    // await loadProducts();
+  }
+
+  @action
   Future<void> toggleDiscountStatus(int index) async {
     final product = products[index];
     if (product.discount != null) {

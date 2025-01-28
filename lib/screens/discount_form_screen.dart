@@ -1,8 +1,8 @@
-import 'package:cresce_vendas_app_v1/components/CustomAppBar.dart';
-import 'package:cresce_vendas_app_v1/components/CustomDateTimePicker.dart';
-import 'package:cresce_vendas_app_v1/components/CustomDropdownButtonFormField.dart';
-import 'package:cresce_vendas_app_v1/components/CustomFormTextField.dart';
-import 'package:cresce_vendas_app_v1/components/DashedBorderContainer.dart';
+import 'package:cresce_vendas_app_v1/widgets/customAppBar.dart';
+import 'package:cresce_vendas_app_v1/components/customDateTimePicker.dart';
+import 'package:cresce_vendas_app_v1/components/customDropdownButtonFormField.dart';
+import 'package:cresce_vendas_app_v1/components/customFormTextField.dart';
+import 'package:cresce_vendas_app_v1/components/dashedBorderContainer.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../models/product.dart';
@@ -30,7 +30,6 @@ class _DiscountFormScreenState extends State<DiscountFormScreen> {
   String? _imagePath;
   final _store = ProductStore();
 
-  // Discount type specific controllers
   final _fromPriceController = TextEditingController();
   final _toPriceController = TextEditingController();
   final _priceController = TextEditingController();
@@ -122,8 +121,6 @@ class _DiscountFormScreenState extends State<DiscountFormScreen> {
               const SizedBox(height: 16),
               _buildDiscountTypeFields(),
               const SizedBox(height: 16),
-              // Substituindo o ListTile pelo CustomDateTimePicker
-
               Row(
                 children: [
                   Expanded(
@@ -153,7 +150,6 @@ class _DiscountFormScreenState extends State<DiscountFormScreen> {
                   )
                 ],
               ),
-
               const SizedBox(height: 24),
               DashedBorderContainer(
                 child: Center(
@@ -161,12 +157,12 @@ class _DiscountFormScreenState extends State<DiscountFormScreen> {
                     onTap: _pickImage,
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(
-                        maxWidth: 73, // Largura máxima
-                        maxHeight: 52, // Altura máxima
+                        maxWidth: 73,
+                        maxHeight: 52,
                       ),
                       child: Container(
-                        width: 73, // Largura fixa
-                        height: 52, // Altura fixa
+                        width: 73,
+                        height: 52,
                         child:
                             _imagePath != null && File(_imagePath!).existsSync()
                                 ? Image.file(
@@ -175,8 +171,8 @@ class _DiscountFormScreenState extends State<DiscountFormScreen> {
                                   )
                                 : SvgPicture.asset(
                                     'assets/svg/Frame.svg',
-                                    width: 73, // Largura do SVG
-                                    height: 51, // Altura do SVG
+                                    width: 73,
+                                    height: 51,
                                   ),
                       ),
                     ),
@@ -313,6 +309,23 @@ class _DiscountFormScreenState extends State<DiscountFormScreen> {
 
   Future<void> _saveDiscount() async {
     if (_formKey.currentState?.validate() ?? false) {
+      if (_startDate.isAfter(_endDate)) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+                'A data de ativação não pode ser maior que a data de inativação.'),
+          ),
+        );
+        return;
+      }
+      if (_imagePath == null || !File(_imagePath!).existsSync()) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Por favor, selecione uma imagem.'),
+          ),
+        );
+        return;
+      }
       final discount = Discount(
         status: true,
         type: _selectedDiscountType,
@@ -336,12 +349,14 @@ class _DiscountFormScreenState extends State<DiscountFormScreen> {
       );
 
       if (widget.product != null) {
-        final index = _store.products.indexOf(widget.product!);
-        if (index != -1) {
-          await _store.updateProduct(index, product);
+        final productId = widget.product!.id;
+        await _store.loadProducts();
+        final existingProductIndex =
+            _store.products.indexWhere((p) => p.id == productId);
+
+        if (existingProductIndex != -1) {
+          await _store.updateProduct(existingProductIndex, product);
         } else {
-          // Handle the case where the product is not found in the list
-          // For example, you can show an error message or add the product as a new entry
           await _store.addProduct(product);
         }
       } else {
@@ -349,6 +364,9 @@ class _DiscountFormScreenState extends State<DiscountFormScreen> {
       }
 
       if (mounted) {
+        Navigator.pop(context);
+      }
+      if (Navigator.canPop(context)) {
         Navigator.pop(context);
       }
     }

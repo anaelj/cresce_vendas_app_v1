@@ -1,4 +1,4 @@
-import 'package:cresce_vendas_app_v1/components/CustomAppBar.dart';
+import 'package:cresce_vendas_app_v1/widgets/customAppBar.dart';
 import 'package:cresce_vendas_app_v1/widgets/discount_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
